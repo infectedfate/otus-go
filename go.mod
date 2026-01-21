@@ -1,3 +1,3 @@
-module github.com/infectedfate/otus-go
+module otus-go
 
 go 1.25.0
