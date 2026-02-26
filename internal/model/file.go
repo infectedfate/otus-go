@@ -1,27 +1,17 @@
 package model
 
-type File struct {
-    name  string `json:"name"`
-    path  string `json:"path"`
-    type_ string `json:"type"`
+// интерфейс для объектов, которые можно сохранять
+type Storable interface {
+	GetPath() string
 }
 
-func NewFile(name, path, type_ string) *File {
-    return &File{name: name, path: path, type_: type_}
+// представляет статический файл
+type StaticFile struct {
+	Path     string
+	Size     int64
+	MimeType string
 }
 
-func (f *File) GetName() string {
-    return f.name
-}
-
-func (f *File) GetPath() string {
-    return f.path
-}
-
-func (f *File) GetType() string {
-    return f.type_
-}
-
-func (f *File) UpdatePath(newPath string) {
-    f.path = newPath
+func (sf StaticFile) GetPath() string {
+	return sf.Path
 }

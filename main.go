@@ -1,15 +1,13 @@
+// main.go
 package main
 
 import (
-	"fmt"
-    "otus-go/internal/model"
+	"otus-go/internal/repository"
+	"otus-go/internal/service"
 )
 
 func main() {
-	config := model.ServerConfig{
-        Port:      8080,
-        StaticDir: "./static",
-	}
-
-	fmt.Println(config)
+	storage := repository.NewStorage()
+	generator := service.NewFileGenerator(storage, "./static")
+	generator.StartGenerating()
 }
